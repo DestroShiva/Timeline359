@@ -34,7 +34,7 @@ public class CharController : MonoBehaviour
             anim.SetTrigger("reload");
         }
 
-        //single Fire animation Trigger
+        //Full Auto Fire animation Trigger
         if (Input.GetMouseButton(0))
         {
             anim.SetTrigger("FullFire");

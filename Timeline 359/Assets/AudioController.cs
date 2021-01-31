@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scriptofnothing : MonoBehaviour
+public class AudioController : MonoBehaviour
 {
+    public AudioSource m4FullOutdoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,8 @@ public class Scriptofnothing : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Fire(){
+        m4FullOutdoor.Play();
     }
 }
