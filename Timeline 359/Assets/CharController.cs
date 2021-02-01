@@ -11,8 +11,10 @@ public class CharController : MonoBehaviour
     public float ySensitivity = 2;
     Camera cam;
     public GameObject jumpCheck;
-    public Vector3 jumpCheckSize;
+    private Vector3 jumpCheckSize;
     public float jumpForce = 400;
+    public AudioSource fireTail;
+    
 
     void Start()
     {
@@ -24,7 +26,7 @@ public class CharController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         //Animation
@@ -38,6 +40,8 @@ public class CharController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             anim.SetTrigger("FullFire");
+            fireTail.Play();
+
 
         }
 
@@ -47,15 +51,21 @@ public class CharController : MonoBehaviour
             anim.SetTrigger("jump");
         }
         //walking
-        if (Input.GetKey(KeyCode.W))
+        if ((Input.GetKey(KeyCode.W))|| (Input.GetKey(KeyCode.A))|| (Input.GetKey(KeyCode.S))||(Input.GetKey(KeyCode.D)))
         {
             anim.SetBool("walking", true);
-        }else if (Input.GetKeyUp(KeyCode.W))
+            
+        }
+        else if ((Input.GetKeyUp(KeyCode.W))||(Input.GetKeyUp(KeyCode.A))||(Input.GetKeyUp(KeyCode.S))||(Input.GetKeyUp(KeyCode.D)))
         {
             anim.SetBool("walking", false);
-        }
+            
 
-      
+        }
+    
+        
+
+    
         //movement
         Vector2 xMov = new Vector2(Input.GetAxisRaw("Horizontal") * transform.right.x, Input.GetAxisRaw("Horizontal") * transform.right.z);
         Vector2 zMov = new Vector2(Input.GetAxisRaw("Vertical") * transform.forward.x, Input.GetAxisRaw("Vertical") * transform.forward.z);
@@ -107,5 +117,5 @@ public class CharController : MonoBehaviour
 
 
     }
-    
+  
 }
